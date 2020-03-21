@@ -1,7 +1,7 @@
 <template>
   <div>
     <VideoPlayer />
-    <AudioPlayer :sources="audioSources" :loop="true" :autoplay="false" />
+    <AudioPlayer :sources="audioSources" :loop="true" :autoplay="true" />
   </div>
 </template>
 
@@ -20,10 +20,7 @@ export default {
         require('~/assets/audio/my-brightest-diamond-i-have-never-loved-someone.mp3')
       ]
     }
-  },
-  computed: {},
-  mounted() {},
-  methods: {}
+  }
 }
 </script>
 

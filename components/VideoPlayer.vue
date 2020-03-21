@@ -5,16 +5,13 @@
     :options="playerOptions"
     :playsinline="true"
     :play-on-load-start="true"
-    custom-event-name="customstatechangedeventname"
-    @pause="changeVideo"
-    @ready="playerReadied"
+    :oncanplay="muteVideo"
+    @ended="changeVideo"
   >
   </video-player>
 </template>
 
 <script>
-import '~/assets/video/1.webm'
-
 export default {
   data() {
     return {
@@ -24,11 +21,88 @@ export default {
         width: '100vw',
         height: '100vh',
         language: 'en',
+        autoplay: true,
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         sources: [
           {
             type: 'video/mp4',
-            src: '_nuxt/assets/video/2.webm'
+            src: require('assets/video/1.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/2.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/3.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/4.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/5.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/6.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/7.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/8.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/9.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/10.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/11.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/12.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/13.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/14.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/15.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/16.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/17.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/18.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/19.webm')
+          },
+          {
+            type: 'video/mp4',
+            src: require('assets/video/20.webm')
           }
         ],
         poster:
@@ -41,34 +115,18 @@ export default {
       return this.$refs.videoPlayer.player
     }
   },
-  mounted() {
-    console.log('this is current player instance object', this.player)
-  },
   methods: {
-    // listen event
-    onPlayerPlay(player) {
-      console.log('player play!', player)
+    muteVideo() {
+      this.playerOptions.muted = true
     },
-    onPlayerPause(player) {
-      console.log('player pause!', player)
-    },
-    // ...player event
-
-    // or listen state event
-    playerStateChanged(playerCurrentState) {
-      console.log('player current update state', playerCurrentState)
-    },
-
-    // player is ready
-    playerReadied(player) {
-      console.log(this.playerOptions.sources)
-      // you can use it to do something...
-      // player.[methods]
+    onPlayerReady(player) {
+      console.log('player ready!', player)
+      this.player.play()
     },
     changeVideo() {
-      this.playerOptions.sources[0].src = `_nuxt/assets/video/${this.counter +
-        1}.webm`
-      console.log(this.playerOptions.sources[0].src)
+      const video2 = require('assets/video/2.webm')
+      this.player.src(video2)
+      this.player.load()
     }
   }
 }
