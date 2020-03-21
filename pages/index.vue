@@ -1,7 +1,12 @@
 <template>
   <div>
     <VideoPlayer />
-    <AudioPlayer :sources="audioSources" :loop="true" :autoplay="true" />
+    <AudioPlayer
+      :sources="audioSources"
+      :loop="true"
+      :autoplay="true"
+      :mute="true"
+    />
   </div>
 </template>
 

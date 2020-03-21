@@ -22,7 +22,7 @@ export default {
         height: '100vh',
         language: 'en',
         autoplay: true,
-        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        playbackRates: [],
         sources: [
           {
             type: 'video/mp4',
@@ -124,8 +124,14 @@ export default {
       this.player.play()
     },
     changeVideo() {
-      const video2 = require('assets/video/2.webm')
-      this.player.src(video2)
+      if (this.counter < 20) {
+        const nextVideo = this.playerOptions.sources[this.counter++].src
+        this.player.src(nextVideo)
+      } else {
+        this.counter = 0
+        const nextVideo = this.playerOptions.sources[this.counter++].src
+        this.player.src(nextVideo)
+      }
       this.player.load()
     }
   }
